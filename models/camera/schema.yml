@@ -1,0 +1,42 @@
+version: 2
+
+models:
+  - name: camera_connect_home_country_dbt
+    description: Testing this
+
+    columns:
+        - name: epmeta_user_geo_country_name
+          description: Name of the country
+
+        - name: epmeta_camera_sn_hash
+          description: Camera sn hash
+          tests:
+              - not_null
+
+        - name: epmeta_camera_sn
+          description: Name of the country
+          tests:
+              - not_null
+
+        - name: epmeta_user_geo_country_code
+          description: Name of the country
+
+        - name: epmeta_user_geo_continent_namecamera_connect_home_country_dbtcamera_connect_home_country_dbt
+          description: Name of the country
+
+        - name: epmeta_analytics_opt_in
+          description: Name of the country
+          tests:
+            - accepted_values:
+                values: ['TRUE', 'FALSE', '0','1','false','true','hello']
+                severity: warn
+
+        - name: concount
+          description: Name of the country
+
+        - name: connect_count
+          description: Name of the country
+
+        - name: event_count
+          description: Name of the country
+
