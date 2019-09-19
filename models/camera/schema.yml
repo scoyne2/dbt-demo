@@ -1,42 +1,221 @@
 version: 2
 
+camera_connect_category_dbt:
+  constraints:
+    not_null:
+      - epmeta_xgpdatacategory
+
+sources:
+  - name: camera
+    database: camera
+    schema: camera
+    tables:
+      - name: camera_log_main_dse
+      - name: camera_agg_capture_main_dse
+
 models:
-  - name: camera_connect_home_country_dbt
-    description: Testing this
-
+  - name: camera_session_agg_main_dbt
+    description: Camera Session information. A camera session is continual usage without a gap of 4 or more hours.
     columns:
-        - name: epmeta_user_geo_country_name
-          description: Name of the country
+      - name: session_id
+        description: Id of the session, unique per camera
+      - name: session_start_ts
+        description: Start timestamp for session
+      - name: session_end_ts
+        description: End timestamp for session
+      - name: session_duration
+        description: Duration of session
+      - name: epmeta_camera_sn
+      - name: epmeta_camera_sn_hash
+      - name: epmeta_xgpenvironment
+      - name: epmeta_user_agent
+      - name: epmeta_user_id_hash
+      - name: metadata_camera_model
+      - name: epmeta_product_detail_product_model_text
+      - name: metadata_file_name
+      - name: epmeta_user_geo_longitude
+      - name: epmeta_user_geo_latitude
+      - name: epmeta_user_geo_country_name
+      - name: epmeta_user_geo_city
+      - name: epmeta_user_geo_subdivisions_name
+      - name: total_cam_cap_cnt
+      - name: total_app_cap_cnt
+      - name: total_rc_cap_cnt
+      - name: total_lvc_cap_cnt
+      - name: total_rvc_cap_cnt
+      - name: total_bacpac_cap_cnt
+      - name: total_ble_cap_cnt
+      - name: total_cdc_cap_cnt
+      - name: total_mtp_cap_cnt
+      - name: cam_vid_duration
+      - name: app_vid_duration
+      - name: rc_vid_duration
+      - name: lvc_vid_duration
+      - name: rvc_vid_duration
+      - name: bacpac_vid_duration
+      - name: ble_vid_duration
+      - name: cdc_vid_duration
+      - name: mtp_vid_duration
+      - name: cam_vid_cap_cnt
+      - name: app_vid_cap_cnt
+      - name: rc_vid_cap_cnt
+      - name: lvc_vid_cap_cnt
+      - name: rvc_vid_cap_cnt
+      - name: bacpac_vid_cap_cnt
+      - name: ble_vid_cap_cnt
+      - name: cdc_vid_cap_cnt
+      - name: mtp_vid_cap_cnt
+      - name: cam_sp_cap_cnt
+      - name: app_sp_cap_cnt
+      - name: rc_sp_cap_cnt
+      - name: lvc_sp_cap_cnt
+      - name: rvc_sp_cap_cnt
+      - name: bacpac_sp_cap_cnt
+      - name: ble_sp_cap_cnt
+      - name: cdc_sp_cap_cnt
+      - name: mtp_sp_cap_cnt
+      - name: cam_burst_cap_cnt
+      - name: app_burst_cap_cnt
+      - name: rc_burst_cap_cnt
+      - name: lvc_burst_cap_cnt
+      - name: rvc_burst_cap_cnt
+      - name: bacpac_burst_cap_cnt
+      - name: ble_burst_cap_cnt
+      - name: cdc_burst_cap_cnt
+      - name: mtp_burst_cap_cnt
+      - name: cam_cont_cap_cnt
+      - name: app_cont_cap_cnt
+      - name: rc_cont_cap_cnt
+      - name: lvc_cont_cap_cnt
+      - name: rvc_cont_cap_cnt
+      - name: bacpac_cont_cap_cnt
+      - name: ble_cont_cap_cnt
+      - name: cdc_cont_cap_cnt
+      - name: mtp_cont_cap_cnt
+      - name: cam_nl_cap_cnt
+      - name: app_nl_cap_cnt
+      - name: rc_nl_cap_cnt
+      - name: lvc_nl_cap_cnt
+      - name: rvc_nl_cap_cnt
+      - name: bacpac_nl_cap_cnt
+      - name: ble_nl_cap_cnt
+      - name: cdc_nl_cap_cnt
+      - name: mtp_nl_cap_cnt
+      - name: cam_tlv_cap_cnt
+      - name: app_tlv_cap_cnt
+      - name: rc_tlv_cap_cnt
+      - name: lvc_tlv_cap_cnt
+      - name: rvc_tlv_cap_cnt
+      - name: bacpac_tlv_cap_cnt
+      - name: ble_tlv_cap_cnt
+      - name: cdc_tlv_cap_cnt
+      - name: mtp_tlv_cap_cnt
+      - name: cam_tl_cap_cnt
+      - name: app_tl_cap_cnt
+      - name: rc_tl_cap_cnt
+      - name: lvc_tl_cap_cnt
+      - name: rvc_tl_cap_cnt
+      - name: bacpac_tl_cap_cnt
+      - name: ble_tl_cap_cnt
+      - name: cdc_tl_cap_cnt
+      - name: mtp_tl_cap_cnt
+      - name: cam_looping_cap_cnt
+      - name: app_looping_cap_cnt
+      - name: rc_looping_cap_cnt
+      - name: lvc_looping_cap_cnt
+      - name: rvc_looping_cap_cnt
+      - name: bacpac_looping_cap_cnt
+      - name: ble_looping_cap_cnt
+      - name: cdc_looping_cap_cnt
+      - name: mtp_looping_cap_cnt
+      - name: cam_piv_cap_cnt
+      - name: app_piv_cap_cnt
+      - name: rc_piv_cap_cnt
+      - name: lvc_piv_cap_cnt
+      - name: rvc_piv_cap_cnt
+      - name: bacpac_piv_cap_cnt
+      - name: ble_piv_cap_cnt
+      - name: cdc_piv_cap_cnt
+      - name: mtp_piv_cap_cnt
+      - name: cam_np_cap_cnt
+      - name: app_np_cap_cnt
+      - name: rc_np_cap_cnt
+      - name: lvc_np_cap_cnt
+      - name: rvc_np_cap_cnt
+      - name: bacpac_np_cap_cnt
+      - name: ble_np_cap_cnt
+      - name: cdc_np_cap_cnt
+      - name: mtp_np_cap_cnt
+      - name: pb_cnt
+      - name: cv_cnt
+      - name: cp_cnt
+      - name: cam_ht_count
+      - name: app_ht_count
+      - name: rc_ht_count
+      - name: lvc_ht_count
+      - name: rvc_ht_count
+      - name: bacpac_ht_count
+      - name: ble_ht_count
+      - name: cdc_ht_count
+      - name: mtp_ht_count
+      - name: epmeta_ep_dt
 
-        - name: epmeta_camera_sn_hash
-          description: Camera sn hash
-          tests:
-              - not_null
+  - name: camera_connect_category_dbt
+    description: Table which describes a cameras home country
+    columns:
+      - name: epmeta_xgpdatacategory
+        description: Category of data upload
+        tests:
+          - not_null
+      - name: epmeta_user_id_hash
+        description: User id hashed with SHA2 512
+        tests:
+          - not_null
+      - name: epmeta_camera_sn
+        description: Camera serial number
+      - name: epmeta_camera_sn_hash
+        description: Camera serial number hashed with SHA2 512
+      - name: model
+        description: Camera model number
+      - name: epmeta_user_geo_country_code
+        description: Country code camera connected in
+      - name: epmeta_user_geo_country_name
+        description: Country camera connected in
+      - name: epmeta_user_geo_city
+        description: Continent city connected in
+      - name: epmeta_user_geo_continent_name
+        description: Continent the camera connected in
+      - name: epmeta_user_agent
+        description: User agent
+      - name: epmeta_analytics_opt_in
+        description: If the customer is opt in or not
+      - name: event_count
+        description: Count of events
+      - name: connect_count
+        description: Count of connections
+      - name: epmeta_ep_dt
+        description: Date data was uploaded
 
-        - name: epmeta_camera_sn
-          description: Name of the country
-          tests:
-              - not_null
-
-        - name: epmeta_user_geo_country_code
-          description: Name of the country
-
-        - name: epmeta_user_geo_continent_namecamera_connect_home_country_dbtcamera_connect_home_country_dbt
-          description: Name of the country
-
-        - name: epmeta_analytics_opt_in
-          description: Name of the country
-          tests:
-            - accepted_values:
-                values: ['TRUE', 'FALSE', '0','1','false','true','hello']
-                severity: warn
-
-        - name: concount
-          description: Name of the country
-
-        - name: connect_count
-          description: Name of the country
-
-        - name: event_count
-          description: Name of the country
-
+  - name: camera_connect_home_country
+    description: Table containing camera home country data
+    columns:
+      - name: epmeta_camera_sn_hash
+        description: Name of the country
+      - name: epmeta_camera_sn
+        description: Camera sn hash
+        tests:
+          - not_null
+      - name: epmeta_user_geo_country_name
+        description: Name of the country
+      - name: connection_count
+        description: Name of the country
+      - name: epmeta_analytics_opt_in
+        description: Name of the country
+      - name: epmeta_user_geo_country_code
+        description: Name of the country
+      - name: epmeta_user_geo_continent_name
+        description: Name of the continent
+      - name: snapshot_date
+        description: Date snapshot was taken
+      - name: pos
+        description: Order to be used to remove duplicates
